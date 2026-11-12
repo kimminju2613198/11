@@ -1,43 +1,29 @@
 
 #include <stdio.h>
 
-// Call by Value
-void swap_value(int x, int y) {
-    int temp;
-
-    temp = x;
-    x = y;
-    y = temp;
-}
-
-// Call by Reference
-void swap_reference(int *x, int *y) {
-    int temp;
-
-    temp = *x;
-    *x = *y;
-    *y = temp;
-}
-
 int main(void) {
-    int a = 3;
-    int b = 5;
+    int i;
+    int grade[5];
+    int *ptr = grade;
+    int sum = 0;
+    double average;
 
-    printf("Before swap (Call by Value):\n");
-    printf("a: %d, b: %d\n", a, b);
+    // Input grades
+    for (i = 0; i < 5; i++) {
+        printf("grade[%d] = ", i);
+        scanf("%d", &grade[i]);
+    }
 
-    swap_value(a, b);
+    // Print grades and calculate the sum
+    for (i = 0; i < 5; i++) {
+        printf("grade[%d] = %d\n", i, *(ptr + i));
+        sum += *(ptr + i);
+    }
 
-    printf("After swap (Call by Value):\n");
-    printf("a: %d, b: %d\n", a, b);
+    // Calculate the average
+    average = (double)sum / 5;
 
-    printf("\nBefore swap (Call by Reference):\n");
-    printf("a: %d, b: %d\n", a, b);
-
-    swap_reference(&a, &b);
-
-    printf("After swap (Call by Reference):\n");
-    printf("a: %d, b: %d\n", a, b);
+    printf("Average: %.2f\n", average);
 
     return 0;
 }
