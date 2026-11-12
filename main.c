@@ -2,24 +2,12 @@
 #include <stdio.h>
 
 int main(void) {
-    int i = 10;
-    char c = 'a';
+    int i = 4;  // Try changing the value to 300.
 
-    int *iptr;
-    char *cptr;
-    int *iptr2;
+    int *pi = &i;
+    char *pc = (char *)&i;
 
-    iptr = &i;
-    cptr = &c;
-    iptr2 = iptr;
-
-    printf("i : %p\n", (void *)iptr);
-    printf("%p (size: %zu)\n", (void *)&i, sizeof(iptr));
-
-    printf("c : %p\n", (void *)cptr);
-    printf("%p (size: %zu)\n", (void *)&c, sizeof(cptr));
-
-    printf("iptr2 : %p, %d\n", (void *)iptr2, *iptr2);
+    printf("%d, %d, %d\n", i, *pi, *pc);
 
     return 0;
 }
